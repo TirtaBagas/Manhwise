@@ -65,7 +65,7 @@ def recommend_by_genres(selected_genres, top_n=10):
         return []
 
     # Urutkan hasil
-    filtered = filtered.sort_values(by=['Matching Genres Count', 'Average Score', 'Popularity'], ascending=[False, False, False]).head(top_n)
+    filtered = filtered.sort_values(by=['Matching Genres Count', 'Popularity', 'Average Score',], ascending=[False, False, False]).head(top_n)
 
     return filtered
 
