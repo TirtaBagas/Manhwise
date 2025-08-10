@@ -33,9 +33,11 @@ def recommend_by_title_cosine(title, main_df, personal_df, matched_value, n_reco
         top_scores = sim_scores_sorted[:n_recommendations]
         movie_indices = [i[0] for i in top_scores]
         
-        # PENTING: Ambil data dari personal_df agar 'Cover Image' tersedia
+        
         recommendations = personal_df.iloc[movie_indices].copy()
         recommendations['similarity_score'] = [score[1] for score in top_scores]
+
+        recommendations = recommendations.sort_values(by=['similarity_score', 'Popularity'], ascending=[False, False]).head(n_recommendations)
         
         return recommendations, None
         
